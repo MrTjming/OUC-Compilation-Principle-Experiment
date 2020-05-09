@@ -1,0 +1,12 @@
+"123"
+<INITIAL>\"{str}\"          			{return (STRING);}
+
+<INITIAL>{isstr}          			{return (STRING);}
+
+<INITIAL>"\""           			{BEGIN ISSTRING;}
+<ISSTRING>"\""         			{BEGIN INITIAL;}
+<ISSTRING>{str}       				{BEGIN INITIAL; return (STRING);}
+
+<ISSTRING>"\n"         			{BEGIN INITIAL;}
+
+<ISSTRING>[^\"\n]         			{;}
